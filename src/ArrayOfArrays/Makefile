@@ -10,5 +10,5 @@ TwoDArray.o: TwoDArray.h TwoDArray.cpp
 
 clean:
 	rm -f *.o;
-	rm -f test; rm -f ltest;
+	rm -f ../../build/ArrayOfArrays/*
 	rm -f *~;
