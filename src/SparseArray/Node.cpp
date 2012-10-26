@@ -2,35 +2,47 @@
 #include "Node.h"
 
 template <typename T>
-Node<T>::Node(T v) {
-  value = v;
-  nextRight = 0;
-  nextUnder = 0;
+Node<T>::Node(int r, int c, T v) {
+    value = v;
+    nextInRow = 0;
+    nextInCol = 0;
+    rowAddr = r;
+    colAddr = c;
 }
 
 template <typename T>
 T Node<T>::getValue() {
-  return value;
+    return value;
 }
 
 template <typename T>
-Node<T>*& Node<T>::getNextRight() {
-  return nextRight;
+Node<T>* Node<T>::getNextInRow() {
+    return nextInRow;
 }
 
 template <typename T>
-Node<T>*& Node<T>::getNextUnder() {
-  return nextUnder;
+Node<T>* Node<T>::getNextInCol() {
+    return nextInCol;
 }
 
 template <typename T>
-void Node<T>::setNextRight(Node<T>& n) {
-  nextRight = &n;
+void Node<T>::setNextInRow(Node<T>* n) {
+    nextInRow = n;
 }
 
 template <typename T>
-void Node<T>::setNextUnder(Node<T>& n) {
-  nextUnder = &n;
+void Node<T>::setNextInCol(Node<T>* n) {
+    nextInCol = n;
+}
+
+template <typename T>
+int Node<T>::getRowAddr() {
+    return rowAddr;
+}
+
+template <typename T>
+int Node<T>::getColAddr() {
+    return colAddr;
 }
 
 template class Node<int>;

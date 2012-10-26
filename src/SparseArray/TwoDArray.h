@@ -8,6 +8,9 @@ class LinkedList {
  private:
   Node<T>* top;
   Node<T>* left;
+  int numRows;
+  int numCols;
+  T defaultValue;
 
  public:
   TwoDArray<T>();
