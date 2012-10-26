@@ -1,12 +1,15 @@
 #include <iostream>
 #include <string>
-
+#include <vector>
 #include "TwoDArray.h"
+
+using std::vector;
+using std::string;
 
 int main() {
   TwoDArray<int>* l = new TwoDArray<int>(10, 10);
 
-  TwoDArray<std::string>* s = new TwoDArray<std::string>(20, 20);
+  TwoDArray<string>* s = new TwoDArray<string>(20, 20);
 
   l->insert(5, 9, 5);
   l->insert(1, 1, 100);

@@ -5,44 +5,61 @@
 
 #include "TwoDArray.h"
 
-template <typename T>
-TwoDArray<T>::TwoDArray() {
+using namespace std;
 
+template <typename T>
+TwoDArray<T>::TwoDArray(int r, int c) {
+    theArray = vector< vector<T> >(r) ;
+    for (int i = 0; i < r; ++i) {
+        //theArray[i] = vector<T>(c);
+        theArray.push_back(vector<T>(c));
+    }
+    defaultValue = theArray[0][0];
 }
 
 template <typename T>
 TwoDArray<T>::~TwoDArray() {
-
 }
 
 template <typename T>
-void TwoDArray<T>::insert(int r, int C, T value) {
-
+void TwoDArray<T>::insert(int r, int c, T value) {
+    theArray[r][c] = value;
 }
 
 template <typename T>
 T TwoDArray<T>::access(int r, int c) {
-
+    return theArray[r][c];
 }
 
 template <typename T>
 void TwoDArray<T>::remove(int r, int c) {
-
+    theArray[r][c] = defaultValue;
 }
 
 template <typename T>
 void TwoDArray<T>::print() {
-
+    for (int r = 0; r < getNumRows(); ++r) {
+        std::cout << "[ ";
+        for (int c = 0; c < getNumCols(); ++c) {
+            T value = theArray[r][c];
+            if (value == defaultValue) {
+                std::cout << " , ";
+            } else {
+                std::cout << value << ", ";
+            }
+        }
+        std::cout << "]" << std::endl;
+    }
 }
 
 template <typename T>
-int TwoDArray::getNumRows(){
-
+int TwoDArray<T>::getNumRows(){
+    return theArray.size();
 }
 
 template <typename T>
-int TwoDArray::getNumCols(){
-
+int TwoDArray<T>::getNumCols(){
+    return theArray[0].size();
 }
 
 template class TwoDArray<int>;
