@@ -21,7 +21,7 @@ using std::string;
 TEST(constructor, integerTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<int>* a = new TwoDArray<int>(r, c)
+    TwoDArray<int>* a = new TwoDArray<int>(r, c);
     EXPECT_EQ(r, a->getNumRows());
     EXPECT_EQ(c, a->getNumCols());
     delete a;
@@ -30,7 +30,7 @@ TEST(constructor, integerTest) {
 TEST(constructor, doubleTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<double>* a = new TwoDArray<double>(r, c)
+    TwoDArray<double>* a = new TwoDArray<double>(r, c);
     EXPECT_EQ(r, a->getNumRows());
     EXPECT_EQ(c, a->getNumCols());
     delete a;
@@ -39,7 +39,7 @@ TEST(constructor, doubleTest) {
 TEST(constructor, stringTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<string>* a = new TwoDArray<string>(r, c)
+    TwoDArray<string>* a = new TwoDArray<string>(r, c);
     EXPECT_EQ(r, a->getNumRows());
     EXPECT_EQ(c, a->getNumCols());
     delete a;
@@ -50,136 +50,187 @@ TEST(constructor, stringTest) {
 TEST(insert, integerTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<int>* a = new TwoDArray<int>(r, c)
+    TwoDArray<int>* a = new TwoDArray<int>(r, c);
+    a->insert(0, 0, 400);
+    a->insert(0, 9, 900);
+    a->insert(9, 9, 92939);
+    a->insert(4, 4, 567658);
     delete a;
 }
 
 TEST(insert, doubleTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<double>* a = new TwoDArray<double>(r, c)
+    TwoDArray<double>* a = new TwoDArray<double>(r, c);
+    a->insert(0, 0, 4089.7678);
+    a->insert(0, 9, 900.435468);
+    a->insert(9, 9, 92939.765);
+    a->insert(4, 4, 567658.12);
     delete a;
 }
 
 TEST(insert, stringTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<string>* a = new TwoDArray<string>(r, c)
+    TwoDArray<string>* a = new TwoDArray<string>(r, c);
+    a->insert(0, 0, "hey");
+    a->insert(0, 9, "whats");
+    a->insert(9, 9, "up");
+    a->insert(4, 4, "yooooooooooo");
     delete a;
 }
 
 //T access(int r, int c);
 
-TEST(insert, integerTest) {
+TEST(access, integerTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<int>* a = new TwoDArray<int>(r, c)
+    TwoDArray<int>* a = new TwoDArray<int>(r, c);
+    a->insert(0, 0, 400);
+    EXPECT_EQ(400, a->access(0, 0));
     delete a;
 }
 
-TEST(insert, doubleTest) {
+TEST(access, doubleTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<double>* a = new TwoDArray<double>(r, c)
+    TwoDArray<double>* a = new TwoDArray<double>(r, c);
+    a->insert(5, 4, 423.633);
+    EXPECT_EQ(423.633, a->access(5, 4));
     delete a;
 }
 
-TEST(insert, stringTest) {
+TEST(access, stringTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<string>* a = new TwoDArray<string>(r, c)
+    TwoDArray<string>* a = new TwoDArray<string>(r, c);
+    a->insert(9, 9, "yarrr");
+    EXPECT_EQ("yarrr", a->access(9, 9));
     delete a;
 }
 
 //void remove (int r, int c);
 
-TEST(insert, integerTest) {
+TEST(remove, integerTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<int>* a = new TwoDArray<int>(r, c)
+    TwoDArray<int>* a = new TwoDArray<int>(r, c);
+    a->insert(0, 0, 400);
+    a->remove(0, 0);
+    int d;
+    EXPECT_EQ(d, a->access(0, 0));
     delete a;
 }
 
-TEST(insert, doubleTest) {
+TEST(remove, doubleTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<double>* a = new TwoDArray<double>(r, c)
+    TwoDArray<double>* a = new TwoDArray<double>(r, c);
+    a->insert(9, 9, 400.2);
+    a->remove(9, 9);
+    double d;
+    EXPECT_EQ(d, a->access(9, 9));
     delete a;
 }
 
-TEST(insert, stringTest) {
+TEST(remove, stringTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<string>* a = new TwoDArray<string>(r, c)
+    TwoDArray<string>* a = new TwoDArray<string>(r, c);
+    a->insert(5, 4, "yay");
+    a->remove(5, 4);
+    string d;
+    EXPECT_EQ(d, a->access(0, 0));
     delete a;
 }
 
 //void print();
 
-TEST(insert, integerTest) {
+TEST(print, integerTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<int>* a = new TwoDArray<int>(r, c)
+    TwoDArray<int>* a = new TwoDArray<int>(r, c);
+    a->insert(0, 0, 400);
+    a->insert(0, 9, 900);
+    a->insert(9, 9, 92939);
+    a->insert(4, 4, 567658);
+    a->print();
     delete a;
 }
 
-TEST(insert, doubleTest) {
+TEST(print, doubleTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<double>* a = new TwoDArray<double>(r, c)
+    TwoDArray<double>* a = new TwoDArray<double>(r, c);
+    a->insert(0, 0, 4089.7678);
+    a->insert(0, 9, 900.435468);
+    a->insert(9, 9, 92939.765);
+    a->insert(4, 4, 567658.12);
+    a->print();
     delete a;
 }
 
-TEST(insert, stringTest) {
+TEST(print, stringTest) {
     int r = 10;
     int c = 10;
-    TwoDArray<string>* a = new TwoDArray<string>(r, c)
+    TwoDArray<string>* a = new TwoDArray<string>(r, c);
+    a->insert(0, 0, "hey");
+    a->insert(0, 9, "whats");
+    a->insert(9, 9, "up");
+    a->insert(4, 4, "yooooooooooo");
+    a->print();
     delete a;
 }
 
 //int getNumRows();
 
-TEST(insert, integerTest) {
+TEST(numRows, integerTest) {
     int r = 10;
-    int c = 10;
-    TwoDArray<int>* a = new TwoDArray<int>(r, c)
+    int c = 5;
+    TwoDArray<int>* a = new TwoDArray<int>(r, c);
+    EXPECT_EQ(10, a->getNumRows());
     delete a;
 }
 
-TEST(insert, doubleTest) {
+TEST(numRows, doubleTest) {
     int r = 10;
-    int c = 10;
-    TwoDArray<double>* a = new TwoDArray<double>(r, c)
+    int c = 5;
+    TwoDArray<double>* a = new TwoDArray<double>(r, c);
+    EXPECT_EQ(10, a->getNumRows());
     delete a;
 }
 
-TEST(insert, stringTest) {
+TEST(numRows, stringTest) {
     int r = 10;
-    int c = 10;
-    TwoDArray<string>* a = new TwoDArray<string>(r, c)
+    int c = 5;
+    TwoDArray<string>* a = new TwoDArray<string>(r, c);
+    EXPECT_EQ(10, a->getNumRows());
     delete a;
 }
 
 //int getNumCols();
 
-TEST(insert, integerTest) {
-    int r = 10;
+TEST(numCols, integerTest) {
+    int r = 5;
     int c = 10;
-    TwoDArray<int>* a = new TwoDArray<int>(r, c)
+    TwoDArray<int>* a = new TwoDArray<int>(r, c);
+    EXPECT_EQ(10, a->getNumCols());
     delete a;
 }
 
-TEST(insert, doubleTest) {
-    int r = 10;
+TEST(numCols, doubleTest) {
+    int r = 5;
     int c = 10;
-    TwoDArray<double>* a = new TwoDArray<double>(r, c)
+    TwoDArray<double>* a = new TwoDArray<double>(r, c);
+    EXPECT_EQ(10, a->getNumCols());
     delete a;
 }
 
-TEST(insert, stringTest) {
-    int r = 10;
+TEST(numCols, stringTest) {
+    int r = 5;
     int c = 10;
-    TwoDArray<string>* a = new TwoDArray<string>(r, c)
+    TwoDArray<string>* a = new TwoDArray<string>(r, c);
+    EXPECT_EQ(10, a->getNumCols());
     delete a;
 }
 
