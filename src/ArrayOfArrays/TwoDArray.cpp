@@ -5,6 +5,9 @@
 #include <assert.h>
 #include "TwoDArray.h"
 
+using std::cout;
+using std::endl;
+
 template <typename T>
 TwoDArray<T>::TwoDArray(int r, int c) {
     assert(r > 0 && c > 0);
@@ -12,17 +15,20 @@ TwoDArray<T>::TwoDArray(int r, int c) {
     numCols = c;
     theArray = new T*[r];
     for (int i = 0; i < r; ++i) {
-        theArray[i] = new T[c];
+        T* row = new T[c];
+        for (int j = 0; j < c; ++j) {
+            row[j] = defaultValue;
+        }
+        theArray[i] = row;
     }
-    defaultValue = theArray[0][0];
 }
 
 template <typename T>
 TwoDArray<T>::~TwoDArray() {
     for (int i = 0; i < numRows; ++i) {
-        delete theArray[i];
+        delete[] theArray[i];
     }
-    delete theArray;
+    delete[] theArray;
 }
 
 template <typename T>
