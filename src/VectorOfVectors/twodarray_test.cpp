@@ -5,10 +5,11 @@
 
 using std::vector;
 using std::string;
+using std::cout;
+using std::endl;
 
 int main() {
   TwoDArray<int>* l = new TwoDArray<int>(10, 10);
-
   TwoDArray<string>* s = new TwoDArray<string>(20, 20);
 
   l->insert(5, 9, 5);
