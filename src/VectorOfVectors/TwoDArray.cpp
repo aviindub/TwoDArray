@@ -9,12 +9,10 @@ using namespace std;
 
 template <typename T>
 TwoDArray<T>::TwoDArray(int r, int c) {
-    theArray = vector< vector<T> >(r) ;
+    theArray = vector< vector<T> >() ;
     for (int i = 0; i < r; ++i) {
-        //theArray[i] = vector<T>(c);
-        theArray.push_back(vector<T>(c));
+        theArray.push_back(vector<T>(c, defaultValue));
     }
-    defaultValue = theArray[0][0];
 }
 
 template <typename T>
