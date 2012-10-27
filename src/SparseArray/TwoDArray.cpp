@@ -39,8 +39,8 @@ TwoDArray<T>::~TwoDArray() {
 template <typename T>
 void TwoDArray<T>::insert(int r, int c, T value) {
 
-    assert(r < getNumRows() && r > 0);
-    assert(c < getNumCols() && c > 0);
+    assert(r < getNumRows() && r >= 0);
+    assert(c < getNumCols() && c >= 0);
 
     Node<T>* newNode = new Node<T>(r, c, value);
     Node<T>* currInRow = left[r];
@@ -77,8 +77,8 @@ void TwoDArray<T>::insert(int r, int c, T value) {
 template <typename T>
 T TwoDArray<T>::access(int r, int c) {
 
-    assert(r < getNumRows() && r > 0);
-    assert(c < getNumCols() && c > 0);
+    assert(r < getNumRows() && r >= 0);
+    assert(c < getNumCols() && c >= 0);
 
     Node<T>* curr = left[r];
     while (curr != 0) {
@@ -93,8 +93,8 @@ T TwoDArray<T>::access(int r, int c) {
 template <typename T>
 void TwoDArray<T>::remove(int r, int c) {
 
-    assert(r < getNumRows() && r > 0);
-    assert(c < getNumCols() && c > 0);
+    assert(r < getNumRows() && r >= 0);
+    assert(c < getNumCols() && c >= 0);
     
     Node<T>* currInRow = left[r];
     Node<T>* currInCol = top[c];
@@ -109,6 +109,8 @@ void TwoDArray<T>::remove(int r, int c) {
                 left[r] = currInRow->getNextInRow();
             }
         }
+        prevInRow = currInRow;
+        currInRow = currInRow->getNextInRow();
     }
     while (currInCol != 0) {
         if (currInCol->getRowAddr() == c) {
@@ -118,6 +120,8 @@ void TwoDArray<T>::remove(int r, int c) {
                 left[r] = currInCol->getNextInCol();
             }
         }
+        prevInCol = currInCol;
+        currInCol = currInCol->getNextInCol();
     }
     if (currInCol != 0) {
         delete currInCol;
@@ -131,6 +135,7 @@ void TwoDArray<T>::print() {
         Node<T>* curr = left[i];
         while (curr != 0) {
             row[curr->getColAddr()] = curr->getValue();
+            curr = curr->getNextInRow();
         }
         std::cout << "[ ";
         for (int j = 0; j < getNumCols(); ++j) {
