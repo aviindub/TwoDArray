@@ -9,6 +9,7 @@ using namespace std;
 
 template <typename T>
 TwoDArray<T>::TwoDArray(int r, int c) {
+    //defaultValue = NULL;
     theArray = vector< vector<T> >() ;
     for (int i = 0; i < r; ++i) {
         theArray.push_back(vector<T>(c, defaultValue));
