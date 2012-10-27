@@ -1,1 +1,2 @@
 *.o
+lib/gtest-1.6.0/make/gtest_main.a
