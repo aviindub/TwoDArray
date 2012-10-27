@@ -117,8 +117,7 @@ TEST(remove, integerTest) {
     TwoDArray<int>* a = new TwoDArray<int>(r, c);
     a->insert(0, 0, 400);
     a->remove(0, 0);
-    int d;
-    EXPECT_EQ(d, a->access(0, 0));
+    ASSERT_TRUE(a->access(0, 0) != 400);
     delete a;
 }
 
@@ -129,7 +128,7 @@ TEST(remove, doubleTest) {
     a->insert(9, 9, 400.2);
     a->remove(9, 9);
     double d;
-    EXPECT_EQ(d, a->access(9, 9));
+    ASSERT_TRUE(a->access(0, 0) != 400.2);
     delete a;
 }
 
@@ -140,7 +139,7 @@ TEST(remove, stringTest) {
     a->insert(5, 4, "yay");
     a->remove(5, 4);
     string d;
-    EXPECT_EQ(d, a->access(0, 0));
+    ASSERT_TRUE(a->access(0, 0) != "yay");
     delete a;
 }
 
