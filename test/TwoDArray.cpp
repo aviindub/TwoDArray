@@ -45,6 +45,29 @@ TEST(constructor, stringTest) {
     delete a;
 }
 
+//~TwoDArray<T>(int r, int c);
+
+TEST(destructor, integerTest) {
+    int r = 10;
+    int c = 10;
+    TwoDArray<int>* a = new TwoDArray<int>(r, c);
+    delete a;
+}
+
+TEST(destructor, doubleTest) {
+    int r = 10;
+    int c = 10;
+    TwoDArray<double>* a = new TwoDArray<double>(r, c);
+    delete a;
+}
+
+TEST(destructor, stringTest) {
+    int r = 10;
+    int c = 10;
+    TwoDArray<string>* a = new TwoDArray<string>(r, c);
+    delete a;
+}
+
 //void insert(int r, int c, T value);
 
 TEST(insert, integerTest) {
