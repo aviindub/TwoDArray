@@ -1,19 +1,18 @@
 CPP = g++
 CFLAGS = -Wall -Wextra -Werror
+BUILDPATH = ../../build/SparseArray
+BUILD = $(BUILDPATH)/SparseArrayTest
 
-ltest: list_test.cpp Node.o LinkedList.o
-	$(CPP) $(CFLAGS) -o ltest $^
+main: TwoDArray.o Node.o TwoDArray.o TwoDArray.cpp Node.cpp
+	$(CPP) $(CFLAGS) -o $(BUILD) -c twodarray_test.cpp
 
-test: node_test.cpp Node.o LinkedList.o
-	$(CPP) $(CFLAGS) -o test $^
-
-LinkedList.o: Node.o LinkedList.h LinkedList.cpp
-	$(CPP) $(CFLAGS) -c LinkedList.cpp
+TwoDArray.o: Node.o TwoDArray.h TwoDArray.cpp
+	$(CPP) $(CFLAGS) -c TwoDArray.cpp
 
 Node.o: Node.h Node.cpp
 	$(CPP) $(CFLAGS) -c Node.cpp
 
 clean:
 	rm -f *.o;
-	rm -f test; rm -f ltest;
 	rm -f *~;
+	rm -f $(BUILD)

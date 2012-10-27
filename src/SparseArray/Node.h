@@ -11,7 +11,7 @@ class Node {
   int colAddr;
 
  public:
-  Node<T>(T v);
+  Node<T>(int r, int c, T v);
   T getValue();
   Node<T>* getNextInRow();
   void setNextInRow(Node<T>* n);

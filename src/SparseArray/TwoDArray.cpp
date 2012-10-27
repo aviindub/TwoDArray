@@ -9,15 +9,15 @@
 template <typename T>
 TwoDArray<T>::TwoDArray(int r, int c) {
     assert(r > 0 && c > 0);
-    left = new Node<T>* [r]
-    top = new Node<T>* [c]
+    left = new Node<T>* [r];
+    top = new Node<T>* [c];
     numRows = r;
     numCols = c;
     for (int i = 0; i < r; ++i) {
         left[i] = 0;
     }
     for (int i = 0; i < c; ++i) {
-        right[i] = 0;
+        top[i] = 0;
     }
     defaultValue = *(new T);
 }
@@ -25,7 +25,7 @@ TwoDArray<T>::TwoDArray(int r, int c) {
 template <typename T>
 TwoDArray<T>::~TwoDArray() {
     for (int i = 0; i < getNumRows(); ++i) {
-        curr = left[i];
+        Node<T>* curr = left[i];
         while (curr != 0) {
             Node<T>* toDelete = curr;
             curr = curr->getNextInRow();
@@ -45,19 +45,19 @@ void TwoDArray<T>::insert(int r, int c, T value) {
     Node<T>* newNode = new Node<T>(r, c, value);
     Node<T>* currInRow = left[r];
     Node<T>* prevInRow = 0;
-    if (currInRow == 0 || c < currInRow->getColAddr) {
+    if (currInRow == 0 || c < currInRow->getColAddr()) {
         //row is empty, or newnode column is less than first item in row
-        newNode.setNextInRow(currInRow);
+        newNode->setNextInRow(currInRow);
         left[r] = newNode;
     } else {
         while (currInRow != 0) {
             if (c == currInRow->getColAddr()) {
                 //found node with same row & col addr...replace
                 prevInRow->setNextInRow(newNode);
-                newNode->setNextInRow(currInRow->getNext)
+                newNode->setNextInRow(currInRow->getNextInRow());
                 break;
             } else if (c > currInRow->getColAddr()) {
-                if (currInRow->getNextInRow == 0) {
+                if (currInRow->getNextInRow() == 0) {
                     //col > last in row
                     currInRow->setNextInRow(newNode);
                     break;
@@ -87,7 +87,7 @@ T TwoDArray<T>::access(int r, int c) {
         }
         curr = curr->getNextInRow();
     }
-    return defaultValue();
+    return defaultValue;
 }
 
 template <typename T>
@@ -104,7 +104,7 @@ void TwoDArray<T>::remove(int r, int c) {
     while (currInRow != 0) {
         if (currInRow->getColAddr() == c) {
             if (prevInRow != 0) {
-                prevInRow->setNextInRow(currInRow->getNextInRow())
+                prevInRow->setNextInRow(currInRow->getNextInRow());
             } else { //match is first on the row
                 left[r] = currInRow->getNextInRow();
             }
@@ -113,7 +113,7 @@ void TwoDArray<T>::remove(int r, int c) {
     while (currInCol != 0) {
         if (currInCol->getRowAddr() == c) {
             if (prevInCol != 0) {
-                prevInCol->setNextInCol(currInCol->getNextInCol())
+                prevInCol->setNextInCol(currInCol->getNextInCol());
             } else { //match is first on the row
                 left[r] = currInCol->getNextInCol();
             }
@@ -127,7 +127,7 @@ void TwoDArray<T>::remove(int r, int c) {
 template <typename T>
 void TwoDArray<T>::print() {
     for (int i = 0; i < getNumRows(); ++i) {
-        T row = T[getNumCols()];
+        T* row = new T[getNumCols()];
         Node<T>* curr = left[i];
         while (curr != 0) {
             row[curr->getColAddr()] = curr->getValue();
@@ -140,17 +140,17 @@ void TwoDArray<T>::print() {
                 std::cout << row[j] << ", ";
             }
         }
-        std::cout << "]" << endl;
+        std::cout << "]" << std::endl;
     }
 }
 
 template <typename T>
-int TwoDArray::getNumRows(){
+int TwoDArray<T>::getNumRows(){
     return numRows;
 }
 
 template <typename T>
-int TwoDArray::getNumCols(){
+int TwoDArray<T>::getNumCols(){
     return numCols;
 }
 

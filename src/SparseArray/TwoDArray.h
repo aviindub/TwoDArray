@@ -4,16 +4,16 @@
 #include "Node.h"
 
 template <typename T>
-class LinkedList {
+class TwoDArray {
  private:
-  Node<T>* top;
-  Node<T>* left;
+  Node<T>** top;
+  Node<T>** left;
   int numRows;
   int numCols;
   T defaultValue;
 
  public:
-  TwoDArray<T>();
+  TwoDArray<T>(int r, int c);
   ~TwoDArray<T>();
   void insert(int r, int c, T value);
   T access(int r, int c);
